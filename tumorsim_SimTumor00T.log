@@ -1,0 +1,152 @@
+Brain Tumor MRI Simulator
+========================================
+Marcel Prastawa - prastawa@sci.utah.edu
+This software is provided for research purposes only
+
+Version 1.2.1
+Program compiled on: Feb 14 2013
+
+Using ITK version 4.3.1
+Using VTK version 5.10.1
+
+Tumor simulation parameters
+///////////////////////////
+Dataset name = SimTumor00T
+Input directory = /scratch/TumorSim/TumorSimInput
+Output directory = /scratch/TumorSim/Output00T
+Deformation seed file = /scratch/TumorSim/seed00T.mha
+Deformation iterations = 10
+Deformation brain Young modulus = 694
+Deformation brain Poisson ratio = 0.4
+Deformation falx Young modulus = 2000
+Deformation falx Poisson ratio = 0.4
+Deformation initial pressure (in kPa) = 2.5
+Deformation kappa = 80
+Deformation damping = 0.9
+Infiltration iterations = 60
+Infiltration time step = 0.5
+Infiltration t(early) = 2
+Infiltration body force coefficient (lambda) = 5
+Infiltration body force damping  = 0.9
+Infiltration body force iterations = 2
+White matter tensor multiplier = 10
+Gray matter tensor multiplier = 1
+Contrast enhancement type = uniform
+Gad noise stddev = 8
+T1 noise stddev = 5
+T2 noise stddev = 20
+FLAIR noise stddev = 50
+Gad max bias degree = 4
+T1 max bias degree = 4
+T2 max bias degree = 4
+FLAIR max bias degree = 4
+Not drawing background skull etc
+
+Deformation solver iterations = 8
+Infiltration solver iterations = 8
+Number of simulation threads = 8
+
+Reading VTK mesh...
+Reading voxel labels...
+Reading anatomical probabilities...
+Reading tumor seed image...
+Reading diffusion tensor image...
+Obtaining MD image...
+Scaling DT image...
+Reading precomputed texture images...
+Mass effect simulation...
+  * Deformation iteration 1
+    Computing surface forces with pressure = 2.5 kPa
+  * Deformation iteration 2
+    Computing surface forces with pressure = 2.25 kPa
+  * Deformation iteration 3
+    Computing surface forces with pressure = 2.025 kPa
+  * Deformation iteration 4
+    Computing surface forces with pressure = 1.8225 kPa
+  * Deformation iteration 5
+    Computing surface forces with pressure = 1.64025 kPa
+  * Deformation iteration 6
+    Computing surface forces with pressure = 1.47622 kPa
+  * Deformation iteration 7
+    Computing surface forces with pressure = 1.3286 kPa
+  * Deformation iteration 8
+    Computing surface forces with pressure = 1.19574 kPa
+  * Deformation iteration 9
+    Computing surface forces with pressure = 1.07617 kPa
+  * Deformation iteration 10
+    Computing surface forces with pressure = 0.968551 kPa
+Modifying tensors in tumor seed region...
+Warping and destroying DTI...
+Estimating infiltration...
+  * Infiltration update at t = 0
+    Computing body forces with lambda = 5
+  * Infiltration update at t = 0.5
+  * Infiltration update at t = 1
+  * Infiltration update at t = 1.5
+  * Infiltration update at t = 2
+  - Storing early infiltration values at t = 2
+  * Infiltration update at t = 2.5
+  * Infiltration update at t = 3
+  * Infiltration update at t = 3.5
+  * Infiltration update at t = 4
+  * Infiltration update at t = 4.5
+  * Infiltration update at t = 5
+  * Infiltration update at t = 5.5
+  * Infiltration update at t = 6
+  * Infiltration update at t = 6.5
+  * Infiltration update at t = 7
+  * Infiltration update at t = 7.5
+  * Infiltration update at t = 8
+  * Infiltration update at t = 8.5
+  * Infiltration update at t = 9
+  * Infiltration update at t = 9.5
+  * Infiltration update at t = 10
+  * Infiltration update at t = 10.5
+  * Infiltration update at t = 11
+  * Infiltration update at t = 11.5
+  * Infiltration update at t = 12
+  * Infiltration update at t = 12.5
+  * Infiltration update at t = 13
+  * Infiltration update at t = 13.5
+  * Infiltration update at t = 14
+  * Infiltration update at t = 14.5
+  * Infiltration update at t = 15
+    Computing body forces with lambda = 4.5
+  * Infiltration update at t = 15.5
+  * Infiltration update at t = 16
+  * Infiltration update at t = 16.5
+  * Infiltration update at t = 17
+  * Infiltration update at t = 17.5
+  * Infiltration update at t = 18
+  * Infiltration update at t = 18.5
+  * Infiltration update at t = 19
+  * Infiltration update at t = 19.5
+  * Infiltration update at t = 20
+  * Infiltration update at t = 20.5
+  * Infiltration update at t = 21
+  * Infiltration update at t = 21.5
+  * Infiltration update at t = 22
+  * Infiltration update at t = 22.5
+  * Infiltration update at t = 23
+  * Infiltration update at t = 23.5
+  * Infiltration update at t = 24
+  * Infiltration update at t = 24.5
+  * Infiltration update at t = 25
+  * Infiltration update at t = 25.5
+  * Infiltration update at t = 26
+  * Infiltration update at t = 26.5
+  * Infiltration update at t = 27
+  * Infiltration update at t = 27.5
+  * Infiltration update at t = 28
+  * Infiltration update at t = 28.5
+  * Infiltration update at t = 29
+  * Infiltration update at t = 29.5
+Applying infiltration body forces...
+Computing probabilities...
+  Applying mass effect deformation...
+  Applying infiltration body force deformations...
+Simulating contrast enhancement in T1...
+Generating multimodal MR images
+Inserting artificial inhomogeneity
+Writing final images
+All simulation processes took 2 hours, 29 minutes, 1 seconds
