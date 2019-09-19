@@ -11,7 +11,7 @@ $>python3 converter.py -i DICOM -o NIfTI
 
 ### Examples
 Example1:
-$>python3 converter.py -i DICOM -o NIfTI
+$>python3 converter.py -i DICOM
 
 Example2:
 $>python3 converter.py -i subject04_t1w_p4.mnc.gz -o Subject4
