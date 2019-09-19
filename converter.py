@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument('-i', '--input-file', type=str, required=True)
 parser.add_argument('-o', '--output-dir', type=str, required=False, default='NIfTI')
 args = parser.parse_args()
-#print(args)
+
 
 def check_file_type(input_file):
     if input_file[-4] != '.':
