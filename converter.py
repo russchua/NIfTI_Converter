@@ -10,18 +10,27 @@ parser = argparse.ArgumentParser(
                 ''')
 parser.add_argument('-i', '--input-file', type=str, required=True)
 parser.add_argument('-o', '--output-dir', type=str, required=False, default='NIfTI')
-parser.add_argument('-t', '--file-type', type=str, required=False)
 args = parser.parse_args()
 
 #####Create a folder of it doesn't exist, to store the converted NIfTI files#####
 def check_file_type(input_file):
-    if('.mnc' in input_file):
+
+    if(os.path.exists(input_file) == False):
+        print('Input file not properly specified')
+        exit()        
+
+    elif('.mnc' in input_file):
         return('mnc')
-    if input_file[-4] != '.':
-        return ('ima')
-    elif(input_file[-4:] == '.nii'):
+
+    elif(os.path.exists(input_file) and os.path.isfile(input_file) == False):   #This statement checks for DICOM folders        
+        for item in os.listdir(input_file):                                     #This statement verifies that .ima files are inside            
+            if('.ima' in item.lower()):
+                return('ima')
+
+    elif('.nii' in input_file):        
         print('This is already a NIfTI file.')
         exit()
+        
     else:
         return input_file[-3:]    
 
@@ -75,8 +84,9 @@ def choose_convert(file_type,input_dir,output_dir):
 
 
 
-check_directory(args.output_dir)
+
 file_type = check_file_type(args.input_file)
+check_directory(args.output_dir)
 choose_convert(file_type,args.input_file,args.output_dir)
 
 
