@@ -1,0 +1,3 @@
+dicom2nifti-2.1.7 
+pydicom-1.3.0
+SimpleITK-1.2.2
