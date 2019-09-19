@@ -20,8 +20,7 @@ def check_file_type(input_file):
         print('This is already a NIfTI file.')
         exit()
     else:
-        return input_file[-3:]
-    
+        return input_file[-3:]    
 
 
 def check_directory(output_dir):    
@@ -33,7 +32,7 @@ def check_directory(output_dir):
         print('created directory')
         return True
 
-
+#####Conversion Functions#####
 def convert_ima(input_dir,output_dir):
     import dicom2nifti
     import dicom2nifti.settings as settings
@@ -44,7 +43,6 @@ def convert_ima(input_dir,output_dir):
     settings.set_resample_padding(-1000)
 
     dicom2nifti.convert_directory(input_dir, output_dir)    
-
 
 
 print(args.output_dir)
