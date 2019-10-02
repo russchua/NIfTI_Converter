@@ -9,6 +9,8 @@ $>python3 converter.py -i DICOM -o NIfTI
 
 -o: specify output directory (optional)
 
+-f: if whole folder is to be converted <True/False> (optional)
+
 ### Examples
 Example1:
 $>python3 converter.py -i DICOM
@@ -18,6 +20,9 @@ $>python3 converter.py -i subject04_t1w_p4.mnc.gz -o Subject4
 
 Example3:
 $>python3 converter.py -i SimTumor00T_T1.mha -o TumorSim
+
+Example4: 
+$>python3 converter.py -i Batch3_tumorsim -o InNIfTI -f True
 
 ### Required Libraries 
 dicom2nifti (DICOM     .ima)  Tested Version: 2.1.7
