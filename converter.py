@@ -7,9 +7,11 @@ parser = argparse.ArgumentParser(
             Convert files from mnc,ima or mha formats to the universally accepted NIfTI format.
             -i or --input-file: Input MRI ima folder / mnc or mha file path
             -o or --output-dir: A filepath to the output directory. 
+            -f or --folder: Flag True if this is a folder
                 ''')
 parser.add_argument('-i', '--input-file', type=str, required=True)
 parser.add_argument('-o', '--output-dir', type=str, required=False, default='NIfTI')
+parser.add_argument('-f', '--folder', type=bool, required=False, default=False)
 args = parser.parse_args()
 
 #####Create a folder of it doesn't exist, to store the converted NIfTI files#####
@@ -29,7 +31,8 @@ def check_file_type(input_file):
 
     elif('.nii' in input_file):        
         print('This is already a NIfTI file.')
-        exit()
+        return None
+        #exit()
         
     else:
         return input_file[-3:]    
@@ -69,7 +72,8 @@ def convert_mnc(input_file,output_dir):
 def convert_mha(input_file,output_dir):
     import SimpleITK as sitk
     img = sitk.ReadImage(input_file)
-    sitk.WriteImage(img,output_dir + '/' + input_file[:-4] + '.nii')
+    name = input_file.split("/")[-1]
+    sitk.WriteImage(img,output_dir + '/' + name[:-4] + '.nii')
 
 #####Choose the right conversion function#####
 def choose_convert(file_type,input_dir,output_dir):
@@ -83,14 +87,33 @@ def choose_convert(file_type,input_dir,output_dir):
         print('Unidentified file type')
 
 
+#####Actual Program#####
+def converting_process(input,output):
+    file_type = check_file_type(input)
+    check_directory(output)
+    choose_convert(file_type,input,output)
+
+    print(file_type)
 
 
-file_type = check_file_type(args.input_file)
-check_directory(args.output_dir)
-choose_convert(file_type,args.input_file,args.output_dir)
+if(args.folder == True):
+    check_directory(args.output_dir)
+    for root, dirs, files in os.walk(args.input_file, topdown=True): #topdown=True ensures that we start from the outermost directory        
+        for name in files:                        
+            input = os.path.join(root, name) 
+            output = os.path.join(args.output_dir, root) 
+            check_directory(output)            
+            converting_process(input,output)
+            
+
+#converting_process(args)
+
+#file_type = check_file_type(args.input_file)
+#check_directory(args.output_dir)
+#choose_convert(file_type,args.input_file,args.output_dir)
 
 
-print(file_type)
+#print(file_type)
 
 '''
 for argname in ['input_file']:
