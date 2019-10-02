@@ -64,7 +64,7 @@ def convert_mnc(input_file,output_dir):
                     [1, 0, 0, 0],
                     [0, 0, 0, 1]])
     out = Nifti1Image(minc.get_data(), affine=affine)
-    save(out, output_dir+'/'+basename + '.nii.gz')    
+    save(out, output_dir+'/'+basename + '.nii')    
 
 def convert_mha(input_file,output_dir):
     import SimpleITK as sitk
